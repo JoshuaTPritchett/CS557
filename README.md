@@ -1,13 +1,11 @@
-CS557 PROJECT
-
-#GIT WORKFLOW SETUP
+#Git Setup
 ```
  $git clone repo_url_here
  $git checkout -b your_branch_name (creates a local branch for you to work on)
  $git status (will check which branch you are on)
 ```
 
-#BASIC GIT WORKFLOW TO UPLOAD CODE
+#Basic Git Procedure to Upload Code
 ```
   $git checkout master
   $git pull origin master (pulls master resources)
