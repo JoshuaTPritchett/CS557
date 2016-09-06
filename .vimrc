@@ -1,6 +1,6 @@
 "Vim configuration file
 "@author    jt_pritchett
-"@copyright	ALAS LAB -- WPI
+"@copyright ALAS LAB -- WPI
 
 "No "vi" compatability
 set nocompatible
