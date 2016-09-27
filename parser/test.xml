@@ -1,0 +1,6 @@
+<note>
+  <to id="1" body="aaa"> </to>
+  <from> Jani </from>
+  <heading> Reminder </heading>
+  <body> Don't forget me this weekend! </body>
+</note>

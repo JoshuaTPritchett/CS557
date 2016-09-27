@@ -19,3 +19,7 @@ To load extension
 4) Navigate to where the manifest file exists in this cause it's ~/CS557/extension
 
 5) Reload extension by Ctrl-R or chome://extensions Tools Extensions
+
+#Manifest File Notes
+For actions use "page_action" this will allow you to set
+**DEFAULT IS browser_action
