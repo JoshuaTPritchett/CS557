@@ -60,15 +60,30 @@ def get_question_information(rows):
     #titles? I feel like this may or may not be interesting consider revising later
     question_titles             = []
 
+    question_code               = []
     #Iterate over all of the rows and append the associated values with their arrays
     for row in rows:
-        question_ids.append(row.get('Id'))
-        questions.append(row.get('Body'))
-        question_accepted_ans_ids.append(row.get('AcceptedAnswerId'))
-        question_upvotes_scores.append(row.get('Score'))
-        question_titles.append(rows.get('Title'))
-
-    print question_titles
+        print row.get('id')
+        print row.get('body')
+        if row.get('Id'):
+            print 'there is an id'
+            question_ids.append(row.get('Id'))
+        else:
+            print 'there is no Id tag'
+        if row.get('Body'):
+            questions.append(row.get('Body'))
+        if row.get('AcceptedAnswerId'):
+            question_accepted_ans_ids.append(row.get('AcceptedAnswerId'))
+        if row.get('Score'):
+            question_upvotes_scores.append(row.get('Score'))
+        if row.get('Title'):
+            question_titles.append(rows.get('Title'))
+        if row.get('code'):
+            print 'there is a code tag'
+            question_code.append(rows.get('code'))
+        else:
+            print 'there is no code tag'
+    print question_ids
 
 """
     Function to parse the xml files specified
@@ -83,9 +98,13 @@ def parse_xml(input_file, output_file):
     print 'Output file is: %s'  % output_file
 
     #Since we are parsing XML tag the file with xml
-    soup = BeautifulSoup(open(input_file), "xml")
+    #Pseudo html, required because xml parsing will ignore something like
+    #<row /> within beautifulsoup
+    soup = BeautifulSoup(open(input_file), "html.parser")
     rows = soup.find_all('row')
-
+    print rows
+    if rows:
+        print 'there are rows'
 
     #print rows
     print get_question_information(rows)
