@@ -21,7 +21,7 @@ def process_flawfinder(filename):
     :return: the number of vulnerabilities, the severity of the vulnerability and the type of vulnerability
     """
     proc = subprocess.Popen(
-        ['flawfinder', '--columns', '--omittime', '--dataonly', '-m', '4', '--quiet', '--singleline', filename],
+        ['flawfinder', '--columns', '--omittime', '--dataonly', '--quiet', '--singleline', filename],
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     (out, err) = proc.communicate()
 
