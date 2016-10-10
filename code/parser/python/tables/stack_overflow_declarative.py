@@ -1,8 +1,9 @@
+#!/usr/bin/python
 """
     Creates SQLLite tables using SQL Alchemy for Stack Overflow Project
 
-    @author Joshua T. Prithchett <jtpritchett@wpi.edu>
-    @copyright ALAS LAB WPI, 2016
+    @author     Joshua T. Prithchett <jtpritchett@wpi.edu>
+    @copyright  ALAS LAB WPI, 2016
 """
 
 from sqlalchemy import Column, DateTime, Integer, String, Text
@@ -34,12 +35,11 @@ class Questions(Base):
             last_activity_date          --  last date in which someone produced activity for the post1
             community_owned_date        --  a post has become community owned
     """
-
     id_pk                       = Column(Integer    , primary_key=True)
     post_id                     = Column(Integer    , nullable=False)
+    creation_date               = Column(DateTime   , nullable=True)
     title                       = Column(String(512), nullable=False)
     tags                        = Column(String(128), nullable=True)
-    last_editor_display_name    = Column(String(128), nullable=True)
     body                        = Column(Text       , nullable=False)
     score                       = Column(Integer    , nullable=True)
     view_count                  = Column(Integer    , nullable=True)
@@ -49,7 +49,7 @@ class Questions(Base):
     owner_user_id               = Column(Integer    , nullable=True)
     accepted_answer_id          = Column(Integer    , nullable=True)
     last_editor_user_id         = Column(Integer    , nullable=True)
-    creation_date               = Column(DateTime   , nullable=True)
+    last_editor_display_name    = Column(String(128), nullable=True)
     last_edit_date              = Column(DateTime   , nullable=True)
     last_activity_date          = Column(DateTime   , nullable=True)
     community_owned_date        = Column(DateTime   , nullable=True) #could cause problems
@@ -76,15 +76,17 @@ class Answers(Base):
     answer_id                   = Column(Integer    , nullable=False)
     parent_id                   = Column(Integer    , nullable=False)
     owner_user_id               = Column(Integer    , nullable=False)
-    score                       = Column(Integer    , nullable=False)
-    comment_count               = Column(Integer    , nullable=False)
-    last_editor_user_id         = Column(Integer    , nullable=False)
-    last_editor_display_name    = Column(String(64) , nullable=False)
-    last_edit_date              = Column(DateTime   , nullable=False)
-    last_activity_date          = Column(DateTime   , nullable=False)
-    creation_date               = Column(DateTime   , nullable=False)
-    community_owned_date        = Column(DateTime   , nullable=False)
+    tags                        = Column(String(128), nullable=True)
     code                        = Column(Text       , nullable=False)
+    body                        = Column(Text       , nullable=False)
+    score                       = Column(Integer    , nullable=True)
+    comment_count               = Column(Integer    , nullable=True)
+    last_editor_user_id         = Column(Integer    , nullable=True)
+    last_editor_display_name    = Column(String(64) , nullable=True)
+    last_edit_date              = Column(DateTime   , nullable=True)
+    last_activity_date          = Column(DateTime   , nullable=True)
+    creation_date               = Column(DateTime   , nullable=True)
+    community_owned_date        = Column(DateTime   , nullable=True)
 
 
 # Leverages sql_create engine to create the tables for the database

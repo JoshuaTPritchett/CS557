@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
     The global variables that are going to be used
     withn the stack overflow project to manipulate the
@@ -37,4 +38,7 @@ Base.metadata.bind = engine
 #       .rollback()
 #   This will wipe all of the temporary data, but will
 #   prevent the database from beig corrupted
-DBSession = sessionmake(bind=engine)
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+for pk_id in session.query(Questions.post_id).all():
+    print pk_id

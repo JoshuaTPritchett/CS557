@@ -1,13 +1,19 @@
+#!/usr/bin/python
+
 from sqlalchemy     import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from stack_overflow_declarative import Questions, Answers, Base
 
-engine = create_engine('sqlite:///stack_overflow.db')
 
+engine = create_engine('mysql://root:Password01!@localhost/stack_overflow')
 #Bind the associated metadata from the tables base class
-Base.metadata.bind = engine
 
+#MYSQL METADATA
+Base.metadata.create_all(engine)
+
+#SQLLITE variation
+#Base.metadata.bind = engine
 
 #Create the DBSession for the processing
 DBSession = sessionmaker(bind=engine)
